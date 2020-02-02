@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:skis_campus_game/mytheme.dart';
+import 'package:skis_campus_game/themes/mytheme.dart';
 import 'category_screen.dart';
 import 'login_screen.dart';
 
