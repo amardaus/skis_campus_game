@@ -13,8 +13,8 @@ Future<void> main() async{
     MaterialApp(
       theme: myTheme,
       home: teamName == null ? 
-    //LoginScreen() : CategoryScreen())
-    LoginScreen() : LoginScreen())
+      LoginScreen() : CategoryScreen())
+    //LoginScreen() : LoginScreen())
   );
 }
     

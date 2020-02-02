@@ -7,6 +7,4 @@ final ThemeData myTheme = new ThemeData(
   accentColor: Color(0xffFF0D34),
   accentColorBrightness: Brightness.light,
   textTheme: TextTheme(title: TextStyle( color: Colors.white ),),
-  
-
 );
