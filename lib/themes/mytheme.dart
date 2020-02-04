@@ -16,3 +16,8 @@ class CatColors{
   static final Color catViolet = new Color(0xff8F80F1);
   static final Color catPink = new Color(0xffD5ACF9);
 }
+
+class TaskColors{
+  static final Color unavailable = Colors.grey;
+  //static final Color unavailable = Colors.grey;
+}

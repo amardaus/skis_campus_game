@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
-import 'category_screen.dart';
-import 'login_screen.dart';
+import 'package:skis_campus_game/screens/category_screen.dart';
+import 'package:skis_campus_game/screens/login_screen.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,6 @@ Future<void> main() async{
       theme: myTheme,
       home: teamName == null ? 
       LoginScreen() : CategoryScreen())
-    //LoginScreen() : LoginScreen())
   );
 }
     

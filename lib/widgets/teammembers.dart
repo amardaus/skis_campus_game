@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/member_text_field.dart';
+import 'package:skis_campus_game/widgets/member_text_field.dart';
+
 
 class EnterTeamMembers extends StatelessWidget{
   @override

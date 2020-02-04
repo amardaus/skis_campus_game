@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:skis_campus_game/category_screen.dart';
-import 'package:skis_campus_game/enter_team_name.dart';
+import 'package:skis_campus_game/screens/category_screen.dart';
+import 'package:skis_campus_game/widgets/teammembers.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
-import 'enter_team_members.dart';
+import 'package:skis_campus_game/widgets/teamname.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

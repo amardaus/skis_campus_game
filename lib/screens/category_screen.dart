@@ -6,10 +6,11 @@ import 'package:skis_campus_game/category.dart';
 class CategoryScreen extends StatelessWidget {
 
   final List<Category> categories = [
-    Category("Programming", CatColors.catBlue),
-    Category("Hardware", CatColors.catGreen),
-    Category("Cryptography", CatColors.catViolet),
-    Category("Math", CatColors.catPink)]; 
+    Category("Programming", CatColors.catBlue, 'assets/images/categories/code.png'),
+    Category("Hardware", CatColors.catGreen, 'assets/images/categories/hardware.png'),
+    Category("Cryptography", CatColors.catViolet, 'assets/images/categories/crypto.png'),
+    Category("Math", CatColors.catPink,'assets/images/categories/math.png'
+  )]; 
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,7 @@ class CategoryScreen extends StatelessWidget {
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
         padding: EdgeInsets.all(20),
-        children: <Widget>[
-          CategoryButton(category: categories[0],),
-          CategoryButton(category: categories[1],),
-          CategoryButton(category: categories[2],),
-          CategoryButton(category: categories[3],),
-        ]
+        children: categories.map((item) => new CategoryButton(category: item)).toList(),
       )
     );
   }

@@ -11,6 +11,7 @@ class EnterTeamName extends StatelessWidget{
           child: TextField(
           decoration: InputDecoration(
             hintText: 'Teamname',
+            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             filled: true,
             fillColor: Colors.white,
             border: OutlineInputBorder(
