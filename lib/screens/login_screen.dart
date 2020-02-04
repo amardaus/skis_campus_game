@@ -8,11 +8,11 @@ import 'package:skis_campus_game/widgets/teamname.dart';
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return LoginScreenState();
+    return _LoginScreenState();
   }
 }
 
-class LoginScreenState extends State<LoginScreen>{
+class _LoginScreenState extends State<LoginScreen>{
   bool teamNameEntered = false;
 
   @override

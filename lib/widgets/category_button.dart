@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/category.dart';
-import 'package:skis_campus_game/screens/tasks_screen.dart';
+import 'package:skis_campus_game/screens/choose_task_screen.dart';
 
 class CategoryButton extends StatelessWidget{
   final Category category;
@@ -14,8 +14,7 @@ class CategoryButton extends StatelessWidget{
       borderRadius: BorderRadius.all(Radius.circular(10)),
       child: InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => TaskScreen(category: category)));
-          //pass category
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseTaskScreen(category: category)));
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

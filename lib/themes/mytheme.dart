@@ -18,6 +18,7 @@ class CatColors{
 }
 
 class TaskColors{
-  static final Color unavailable = Colors.grey;
-  //static final Color unavailable = Colors.grey;
+  static final Color diasbled = Colors.grey;
+  static final Color negativeBtn = new Color(0xffEF426A);
+  static final Color positiveBtn = new Color(0xff4AA6CD);
 }

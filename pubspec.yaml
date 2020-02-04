@@ -47,6 +47,7 @@ flutter:
     - assets/images/categories/crypto.png
     - assets/images/categories/hardware.png
     - assets/images/categories/math.png
+    - assets/images/categories/tmp/resistor.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
