@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:skis_campus_game/task.dart';
+import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
 import 'package:skis_campus_game/widgets/time_counter.dart';
 
 class TaskScreen extends StatefulWidget{
-  final Task task;
+  final SingleTask task;
 
   const TaskScreen({Key key, @required this.task}) : super(key: key);
 

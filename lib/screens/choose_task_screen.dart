@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/category.dart';
 import 'package:skis_campus_game/models/tasklist.dart';
-import 'package:skis_campus_game/task.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
-import 'package:skis_campus_game/widgets/task_dialog.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:skis_campus_game/widgets/task_dialog.dart';
 
 class ChooseTaskScreen extends StatelessWidget{
   final Category category;
@@ -14,7 +14,7 @@ class ChooseTaskScreen extends StatelessWidget{
   ChooseTaskScreen({Key key, @required this.category}) : super(key: key);
 
   Future<TaskList> fetchTasks() async {
-    final String url = "http://ec2-35-178-173-107.eu-west-2.compute.amazonaws.com:3000/tasks/math";
+    final String url = "http://ec2-35-178-173-107.eu-west-2.compute.amazonaws.com:3000/tasks/programming";
     final res = await http.get(url);
     if (res.statusCode == 200) {
         return TaskList.fromJson(json.decode(res.body));
@@ -39,8 +39,27 @@ class ChooseTaskScreen extends StatelessWidget{
             ),
             backgroundColor: myTheme.primaryColor,
             body: Center(
-              //  nie 0 tylko nazwa!!!!!!!
-              child: Text(snapshot.data.tasklist[0].name, style: Theme.of(context).textTheme.title,))
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: GridView.count(
+                  childAspectRatio: 2,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  children: snapshot.data.tasklist.map((task) => new FlatButton(
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10)),
+                    child: Text(task.points.toString()),
+                    padding: EdgeInsets.all(20),
+                    disabledColor: TaskColors.diasbled,
+                    //color: task.available ? widget.category.color : TaskColors.diasbled,
+                    color: task.available ? TaskColors.positiveBtn : TaskColors.diasbled,
+                    onPressed: task.available ? (){
+                      showDialog(context: context, builder: (BuildContext context) => TaskDialog(task: task));
+                    } : null,
+                  )).toList(),
+                 ),
+                ),
+              )
             );
           }
           else{

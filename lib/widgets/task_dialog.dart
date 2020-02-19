@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/screens/task_screen.dart';
-import 'package:skis_campus_game/task.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
 
 class TaskDialog extends StatelessWidget{
-  final Task task;
+  final SingleTask task;
 
   TaskDialog({Key key, @required this.task}) : super(key: key);
 
