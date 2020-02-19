@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   shared_preferences: 0.5.6+1
+  http: 0.12.0+4
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,8 @@ flutter:
     - assets/images/categories/crypto.png
     - assets/images/categories/hardware.png
     - assets/images/categories/math.png
+    - assets/images/clock.png
+    - assets/images/clock_white.png
     - assets/images/categories/tmp/resistor.png
 
   # To add assets to your application, add an assets section, like this:

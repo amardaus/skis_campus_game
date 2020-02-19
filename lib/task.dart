@@ -10,4 +10,8 @@ class Task{
 
   Task({@required this.name, @required this.points, @required this.description, 
         @required this.available, @required this.category});
+
+  /*factory Task.fromJson(Map<String, dynamic> json){
+    return Task(name: "x", points: 200, description: "xddd", available: true, category: categories[0]);
+  }*/
 }
