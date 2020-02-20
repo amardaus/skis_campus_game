@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
@@ -15,10 +18,60 @@ class TaskScreen extends StatefulWidget{
 }
 
 class _TaskScreenState extends State<TaskScreen>{
+
+  
+
+  Future<bool>_onWillPop(){
+    return showDialog(context: context, 
+      builder: (context) => new AlertDialog(
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () async {
+              var url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/cancel_task";
+              var body = {
+                "name": widget.task.name,
+                "category": widget.task.category.name.toLowerCase()
+              };
+              var bodyEncoded = json.encode(body);
+
+              var res = await http.post(
+                url,
+                body: bodyEncoded,
+                headers: {
+                  "Accept": "application/json",
+                  "Content-Type": "application/json"
+                }
+              );
+
+              if(res.statusCode == 200){
+                Navigator.of(context).pop(true);
+                Navigator.of(context).pop(true);
+              }
+              else{
+
+              }
+              
+              //replace with named route!!!!!!!
+            },
+            child: Text("YES"),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: Text("NOPE"),
+          ),
+        ],
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
+    return new WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
       appBar: AppBar(backgroundColor: myTheme.accentColor, title: Text(widget.task.name),),
       body: Container(
         color: myTheme.primaryColor,
@@ -56,6 +109,6 @@ class _TaskScreenState extends State<TaskScreen>{
           ],
         ),
       )
-    );
+    ));
   }
 }

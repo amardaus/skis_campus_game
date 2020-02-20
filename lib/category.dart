@@ -13,13 +13,6 @@ class Category{
   }
 }
 
-/*final List<Category> categories = [
-    Category("Programming", CatColors.catBlue, 'assets/images/categories/code.png'),
-    Category("Hardware", CatColors.catGreen, 'assets/images/categories/hardware.png'),
-    Category("Cryptography", CatColors.catViolet, 'assets/images/categories/crypto.png'),
-    Category("Math", CatColors.catPink,'assets/images/categories/math.png'
-  )]; */
-
 final Map<String, Category> categories = {
 "programming": Category("Programming", CatColors.catBlue, 'assets/images/categories/code.png'),
 "math": Category("Math", CatColors.catPink,'assets/images/categories/math.png'),

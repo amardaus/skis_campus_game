@@ -10,11 +10,12 @@ import 'package:skis_campus_game/widgets/task_dialog.dart';
 
 class ChooseTaskScreen extends StatelessWidget{
   final Category category;
+  String url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/tasks/";
 
   ChooseTaskScreen({Key key, @required this.category}) : super(key: key);
 
   Future<TaskList> fetchTasks() async {
-    final String url = "http://ec2-35-178-173-107.eu-west-2.compute.amazonaws.com:3000/tasks/programming";
+    url += this.category.name.toLowerCase();
     final res = await http.get(url);
     if (res.statusCode == 200) {
         return TaskList.fromJson(json.decode(res.body));
@@ -35,7 +36,7 @@ class ChooseTaskScreen extends StatelessWidget{
             return Scaffold(
             appBar: AppBar(
               backgroundColor: myTheme.accentColor,
-              title: Text("XD"),
+              title: Text(this.category.name),
             ),
             backgroundColor: myTheme.primaryColor,
             body: Center(
@@ -51,8 +52,7 @@ class ChooseTaskScreen extends StatelessWidget{
                     child: Text(task.points.toString()),
                     padding: EdgeInsets.all(20),
                     disabledColor: TaskColors.diasbled,
-                    //color: task.available ? widget.category.color : TaskColors.diasbled,
-                    color: task.available ? TaskColors.positiveBtn : TaskColors.diasbled,
+                    color: task.available ? this.category.color : TaskColors.diasbled,
                     onPressed: task.available ? (){
                       showDialog(context: context, builder: (BuildContext context) => TaskDialog(task: task));
                     } : null,

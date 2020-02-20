@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/screens/task_screen.dart';
@@ -47,8 +50,29 @@ class TaskDialog extends StatelessWidget{
               ),
             FlatButton(child: Text("Accept", style: TextStyle(color: Colors.white)), 
               color: TaskColors.positiveBtn, 
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TaskScreen(task: task)));
+              onPressed: () async {
+                var url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/begin_task";
+                var body = {
+                  "name": this.task.name,
+                  "category": this.task.category.name.toLowerCase()
+                };
+                var bodyEncoded = json.encode(body);
+
+                var res = await http.post(
+                  url, 
+                  body: bodyEncoded,
+                  headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                  }
+                );
+
+                if(res.statusCode == 200){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TaskScreen(task: task)));
+                }
+                else{ //error ??
+                  
+                }
               },
               shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)))
           ],),)
