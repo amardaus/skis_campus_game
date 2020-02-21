@@ -10,7 +10,7 @@ import 'package:skis_campus_game/widgets/task_dialog.dart';
 
 class ChooseTaskScreen extends StatelessWidget{
   final Category category;
-  String url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/tasks/";
+  String url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/tasks/";
 
   ChooseTaskScreen({Key key, @required this.category}) : super(key: key);
 
@@ -21,8 +21,6 @@ class ChooseTaskScreen extends StatelessWidget{
         return TaskList.fromJson(json.decode(res.body));
     }
 
-//https://medium.com/flutter-community/parsing-complex-json-in-flutter-747c46655f51
-// ^^^^^^ tu pokazane ze trzeba zrobic klase i factory
     return null;
   }
 

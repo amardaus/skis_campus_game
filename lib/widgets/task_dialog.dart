@@ -51,7 +51,7 @@ class TaskDialog extends StatelessWidget{
             FlatButton(child: Text("Accept", style: TextStyle(color: Colors.white)), 
               color: TaskColors.positiveBtn, 
               onPressed: () async {
-                var url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/begin_task";
+                var url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/begin_task";
                 var body = {
                   "name": this.task.name,
                   "category": this.task.category.name.toLowerCase()

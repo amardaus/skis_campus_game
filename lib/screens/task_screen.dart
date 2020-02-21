@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
-import 'package:skis_campus_game/widgets/time_counter.dart';
 
 class TaskScreen extends StatefulWidget{
   final SingleTask task;
@@ -28,7 +27,7 @@ class _TaskScreenState extends State<TaskScreen>{
         actions: <Widget>[
           FlatButton(
             onPressed: () async {
-              var url = "http://ec2-3-8-188-67.eu-west-2.compute.amazonaws.com:3000/cancel_task";
+              var url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/cancel_task";
               var body = {
                 "name": widget.task.name,
                 "category": widget.task.category.name.toLowerCase()
@@ -91,21 +90,6 @@ class _TaskScreenState extends State<TaskScreen>{
               padding: EdgeInsets.all(20),
               child: Text(widget.task.description, style: TextStyle(fontSize: 16),),
             ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: <Widget>[
-                  //Image.asset('assets/images/clock_white.png', height: 100,),
-                  //TimeCounter(),
-                  //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => CategoryScreen()));
-                  RaisedButton(
-                    child: Text("check time"),
-                    onPressed: (){ 
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => TimeCounter()));
-                  },)
-                  //Text('6:29', style: TextStyle(fontSize: 30, color: Colors.white))
-              ],),
-            )
           ],
         ),
       )
