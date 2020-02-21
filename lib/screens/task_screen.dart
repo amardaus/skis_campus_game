@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -17,8 +19,38 @@ class TaskScreen extends StatefulWidget{
 }
 
 class _TaskScreenState extends State<TaskScreen>{
+  String qrCode = "";
 
-  
+  Future scanQR() async{
+    try{
+      String qrCode = await BarcodeScanner.scan();
+      setState(() {
+        this.qrCode = qrCode;
+      });
+    }
+    on PlatformException catch(e){
+      if(e.code == BarcodeScanner.CameraAccessDenied){
+        setState(() {
+          this.qrCode = "Camera permission not granted";
+        });
+      }
+      else{
+        setState(() {
+          this.qrCode = "Unknown error";
+        });
+      }
+    }
+    on FormatException{
+      setState(() {
+        this.qrCode = "null (User returned before scanning anything)";
+      });
+    }
+    catch(e){
+      setState(() {
+        this.qrCode = "Unknown error";
+      });
+    }
+  }
 
   Future<bool>_onWillPop(){
     return showDialog(context: context, 
@@ -90,6 +122,10 @@ class _TaskScreenState extends State<TaskScreen>{
               padding: EdgeInsets.all(20),
               child: Text(widget.task.description, style: TextStyle(fontSize: 16),),
             ),
+            RaisedButton(
+              child: Text("xddd"),
+              onPressed: scanQR
+            )
           ],
         ),
       )
