@@ -20,40 +20,6 @@ class TaskScreen extends StatefulWidget{
 }
 
 class _TaskScreenState extends State<TaskScreen>{
-  String qrCode = "";
-
-  Future scanQR() async{
-    try{
-      String qrCode = await BarcodeScanner.scan();
-      setState(() {
-        this.qrCode = qrCode;
-      });
-    }
-    on PlatformException catch(e){
-      if(e.code == BarcodeScanner.CameraAccessDenied){
-        setState(() {
-          this.qrCode = "Camera permission not granted";
-        });
-      }
-      else{
-        setState(() {
-          this.qrCode = "Unknown error1";
-        });
-      }
-    }
-    on FormatException{
-      setState(() {
-        this.qrCode = "null (User returned before scanning anything)";
-      });
-    }
-    catch(e){
-      setState(() {
-        this.qrCode = "Unknown error2";
-      });
-    }
-    print(qrCode);
-  }
-
   Future<bool>_onWillPop(){
     return showDialog(context: context, 
       builder: (context) => new AlertDialog(
@@ -95,7 +61,6 @@ class _TaskScreenState extends State<TaskScreen>{
             },
             child: Text("NOPE"),
           ),
-          Text("QRcode:" + qrCode)
         ],
         )
     );
@@ -127,7 +92,8 @@ class _TaskScreenState extends State<TaskScreen>{
             ),
             RaisedButton(
               child: Text("xddd"),
-              onPressed: scanQR
+              onPressed: () {},
+              //onPressed: scanQR
             )
           ],
         ),

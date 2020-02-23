@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen>{
                 //jezeli wszystko uzupelnione i druzyna zostala prawidlowo dodana do bazy
                 if(res.statusCode == 200){
                   setState(() {
-                    teamExistsInDb = true;  //TO NIE DZIALA!!!!!!!
+                    teamExistsInDb = true;
                   });
                 }
                 else{

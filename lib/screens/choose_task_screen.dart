@@ -17,6 +17,7 @@ class ChooseTaskScreen extends StatelessWidget{
 
   Future<TaskList> fetchTasks() async {
     url += this.category.name.toLowerCase();
+    print(url);
     final res = await http.get(url);
     if (res.statusCode == 200) {
         return TaskList.fromJson(json.decode(res.body));
@@ -30,6 +31,7 @@ class ChooseTaskScreen extends StatelessWidget{
     return FutureBuilder<TaskList>(
         future: fetchTasks(),
         builder: (context, AsyncSnapshot<TaskList> snapshot){
+          print("snap:");
           print(snapshot);
           if(snapshot.hasData){
             return Scaffold(
