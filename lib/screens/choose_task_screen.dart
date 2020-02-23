@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/category.dart';
 import 'package:skis_campus_game/models/tasklist.dart';
+import 'package:skis_campus_game/server_addr.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
 
 import 'package:http/http.dart' as http;
@@ -10,7 +11,7 @@ import 'package:skis_campus_game/widgets/task_dialog.dart';
 
 class ChooseTaskScreen extends StatelessWidget{
   final Category category;
-  String url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/tasks/";
+  String url = URLaddr.serverAddr + URLaddr.getTasks;
 
   ChooseTaskScreen({Key key, @required this.category}) : super(key: key);
 

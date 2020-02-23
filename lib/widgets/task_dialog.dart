@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/models/singletask.dart';
 import 'package:skis_campus_game/screens/task_screen.dart';
+import 'package:skis_campus_game/server_addr.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
 
 class TaskDialog extends StatelessWidget{
@@ -51,7 +51,7 @@ class TaskDialog extends StatelessWidget{
             FlatButton(child: Text("Accept", style: TextStyle(color: Colors.white)), 
               color: TaskColors.positiveBtn, 
               onPressed: () async {
-                var url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/begin_task";
+                var url = URLaddr.serverAddr + URLaddr.beginTask;
                 var body = {
                   "name": this.task.name,
                   "category": this.task.category.name.toLowerCase()

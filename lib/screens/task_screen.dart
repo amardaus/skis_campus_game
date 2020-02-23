@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:skis_campus_game/models/singletask.dart';
+import 'package:skis_campus_game/server_addr.dart';
 import 'package:skis_campus_game/themes/mytheme.dart';
 
 class TaskScreen extends StatefulWidget{
@@ -36,7 +37,7 @@ class _TaskScreenState extends State<TaskScreen>{
       }
       else{
         setState(() {
-          this.qrCode = "Unknown error";
+          this.qrCode = "Unknown error1";
         });
       }
     }
@@ -47,9 +48,10 @@ class _TaskScreenState extends State<TaskScreen>{
     }
     catch(e){
       setState(() {
-        this.qrCode = "Unknown error";
+        this.qrCode = "Unknown error2";
       });
     }
+    print(qrCode);
   }
 
   Future<bool>_onWillPop(){
@@ -59,7 +61,7 @@ class _TaskScreenState extends State<TaskScreen>{
         actions: <Widget>[
           FlatButton(
             onPressed: () async {
-              var url = "http://ec2-3-8-185-229.eu-west-2.compute.amazonaws.com:3000/cancel_task";
+              var url = URLaddr.serverAddr + URLaddr.cancelTask;
               var body = {
                 "name": widget.task.name,
                 "category": widget.task.category.name.toLowerCase()
@@ -93,6 +95,7 @@ class _TaskScreenState extends State<TaskScreen>{
             },
             child: Text("NOPE"),
           ),
+          Text("QRcode:" + qrCode)
         ],
         )
     );
